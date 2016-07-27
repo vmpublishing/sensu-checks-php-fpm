@@ -60,7 +60,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
       response = `SCRIPT_NAME=#{config[:ping_path]} SCRIPT_FILENAME=#{config[:ping_path]} QUERY_STRING=#{config[:query_string]} REQUEST_METHOD=GET cgi-fcgi -bind -connect #{config[:socket]}`
       response_body = response.split("\r\n\r\n")[1]
       if config[:response] == response_body
-        ok "PHP-FPM said '#{response.body}'"
+        ok "PHP-FPM said '#{response_body}'"
       else
         critical "PHP-FPM said '#{response.body}' instead of '#{config[:response]}'"
       end
@@ -76,7 +76,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
 
       if '200' == response.code
         if config[:response] == response.body
-          ok "PHP-FPM said '#{response_body}'"
+          ok "PHP-FPM said '#{response.body}'"
         else
           critical "PHP-FPM said '#{response.body}' instead of '#{config[:response]}'"
         end
