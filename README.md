@@ -1,9 +1,14 @@
-# Sensu::Checks::Php::Fpm
+# sensu-checks-php-fpm
 
 Check your php-fpm setup over sockets or on their direct ip/port combination.
 So you avoid checking nginx, apache, XYZ along with the check.
 
-## Installation
+## DEPENDENCIES
+
+Testing the sockets directly depends on `libfcgi0ldbl`
+
+
+## INSTALLATION
 
 This gem will give an actual installation explanation, as the default sensu plugins miss it and the sensu documentation lacks any detailed explanation.
 
@@ -22,11 +27,13 @@ cd [SOME_PATH]
 
 Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on your machine.
 
-## Usage
+
+## USAGE
 
 TODO: Write usage instructions here
 
-## Contributing
+
+## CONTRIBUTING
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/vmpublishing/sensu-checks-php-fpm.
 
