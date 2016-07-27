@@ -28,5 +28,5 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sensu-checks-php-fpm.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vmpublishing/sensu-checks-php-fpm.
 
