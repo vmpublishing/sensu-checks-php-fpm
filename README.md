@@ -1,34 +1,30 @@
 # Sensu::Checks::Php::Fpm
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sensu/checks/php/fpm`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Check your php-fpm setup over sockets or on their direct ip/port combination.
+So you avoid checking nginx, apache, XYZ along with the check.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+This gem will give an actual installation explanation, as the default sensu plugins miss it and the sensu documentation lacks any detailed explanation.
 
-```ruby
-gem 'sensu-checks-php-fpm'
+If this gem is listed in rubygems.org, you can just go ahead and do
+```
+sensu-install -p sensu-check-php-fpm
 ```
 
-And then execute:
+If this gem is not listed there, you can still install it; the hard way.
+```
+git clone git@github.com:vmpublishing/sensu-checks-php-fpm [SOME_PATH]
+cd [SOME_PATH]
+/opt/sensu/embedded/bin/gem build *.gemspec
+/opt/sensu/embedded/bin/gem install *.gem
+```
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install sensu-checks-php-fpm
+Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on your machine.
 
 ## Usage
 
 TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
