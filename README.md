@@ -38,9 +38,9 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
 | port | 80 | no | The port of php-fpm to connect to |
 | address | localhost | no | The address of php-fpm to connect to. Hostname or IP |
 | query_string | "" | no | Optional query string to send along with the path (ie. 'pool=some_pool&sticky_flag=foo' ) |
-| ping_path | "/ping" | no | The configured path, where the ping resides. Check your pool config. |
-| response | "pong" | no | The configured response to the ping request |
-| request_timeout | "60" | no | HTTP request timeout. When the sensu timeout is greater than this and this timeout is reached, it will produce a critical error |
+| ping_path | /ping | no | The configured path, where the ping resides. Check your pool config. |
+| response | pong | no | The configured response to the ping request |
+| request_timeout | 60 | no | HTTP request timeout. When the sensu timeout is greater than this and this timeout is reached, it will produce a critical error |
 | socket | | no | Check ping over the socket, instead over http. This renders 'hostname', 'port', 'address' and 'request_timeout' useless |
 
 ### sample check file over sockets
