@@ -22,10 +22,10 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
          description:      "The php-fpm address to check. examples: '127.0.0.1' or 'localhost'",
          default:          'localhost'
 
-  option :http_arguments,
-         short:            '-A ARGUMENTS',
-         long:             '--http-arguments ARGUMENTS',
-         description:      "optional query parameters to send (ie: 'pool=some_pool&stick_flag=13')",
+  option :query_string,
+         short:            '-q ARGUMENTS',
+         long:             '--query-string ARGUMENTS',
+         description:      "optional query string to send (ie: 'pool=some_pool&stick_flag=13')",
          default:          nil
 
   option :ping_path,
@@ -47,6 +47,8 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
          default:          nil
 
   def run
+    
   end
+
 end
 
