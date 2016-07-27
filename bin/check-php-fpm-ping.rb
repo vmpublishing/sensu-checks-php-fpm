@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
 
 require 'sensu-plugin/check/cli'
+require 'net/http'
 
 
 class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
@@ -7,7 +9,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
   option :hostname,
          short:            '-h HOSTNAME',
          long:             '--host HOSTNAME',
-         description:      'This sets the "Host: " parameter of the HTTP-Request, not the address. When not using sockets, this is required!',
+         description:      'This sets the "Host: " parameter of the HTTP-Request, not the address (ie. www.example.com). When not using sockets, this is required!',
          default:          ''
 
   option :port,
@@ -26,7 +28,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
          short:            '-q ARGUMENTS',
          long:             '--query-string ARGUMENTS',
          description:      "optional query string to send (ie: 'pool=some_pool&stick_flag=13')",
-         default:          nil
+         default:          ''
 
   option :ping_path,
          short:            '-p PATH',
@@ -46,9 +48,41 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
          description:      'Request ping over socket. This renders :hostname, :port, :address and :http_arguments useless',
          default:          nil
 
-  def run
-    
-  end
+  option :request_timeout,
+         short:            '-t TIMEOUT',
+         long:             '--request-timeout TIMEOUT',
+         description:      'Set the connect timeout to X',
+         default:          '60'
 
-end
+  def run
+
+    if config[:socket] # do something completely different on this flag
+
+    else # ok, do the http stuff
+      uri = URI("http://#{config[:hostname]}#{config[:ping_path]}?#{config[:query_string]}") # actually hostname does not matter at this point, as it is overwritten
+
+      response = Net::HTTP.start(config[:address], config[:port], read_timeout: config[:request_timeout].to_i) do |http|
+        request = Net::HTTP::Get.new(uri)
+        request['Host'] = config[:hostname] # it matters here
+
+        http.request(request)
+      end
+
+      if '200' == response.code
+        if config[:response] == response.body
+          ok "PHP-FPM said '#{response.body}'"
+        else
+          critical "PHP-FPM said '#{response.body}' instead of '#{config[:response]}'"
+        end
+      else
+        critical "Expected 200, #{response.code} found"
+      end # response.code
+
+    end # http section
+
+  rescue Net::ReadTimeout: e
+    critical "PHP-FPM request timeout: '#{e.message}'"
+  end # def run
+
+end # class
 
