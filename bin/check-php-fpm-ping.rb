@@ -45,7 +45,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
   option :socket,
          short:            '-s SOCKET',
          long:             '--soclet SOCKET',
-         description:      'Request ping over socket. This renders :hostname, :port, :address and :http_arguments useless',
+         description:      'Request ping over socket. This renders :hostname, :port, :address and :request_timeout useless',
          default:          nil
 
   option :request_timeout,
