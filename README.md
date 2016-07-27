@@ -30,6 +30,45 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
 
 ## USAGE
 
+### Parameters (ping check)
+
+| name | default value | required | description |
+|------|---------------|----------|-------------|
+| hostname | '' | yes, unless socket is set | This sets the "Host: " HTTP-Header for the request |
+ 
+
+### sample check file over sockets
+```
+{
+  "checks": {
+    "check_php_fpm_ping": {
+      "command":      "check-php-fpm-ping.rb -s /var/run/php-fpm.sock -p /ping",
+      "standalone":   true,
+      "subscribers":  ["all"],
+      "interval":     10,
+      "timeout":      120,
+      "ttl":          180
+    }
+  }
+}
+```
+
+### sample check file over http
+```
+{
+  "checks": {
+    "check_php_fpm_ping": {
+      "command":      "check-php-fpm-ping.rb -a 127.0.0.1 -P 5678 -h www.example.com -p /ping -t 60",
+      "standalone":   true,
+      "subscribers":  ["all"],
+      "interval":     10,
+      "timeout":      120,
+      "ttl":          180
+    }
+  }
+}
+```
+
 TODO: Write usage instructions here
 
 
