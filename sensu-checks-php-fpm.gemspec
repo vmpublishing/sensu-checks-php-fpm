@@ -3,9 +3,16 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 
+if RUBY_VERSION < '2.0.0'
+  require 'sensu-checks-php-fpm'
+else
+  require_relative 'lib/sensu-checks-php-fpm'
+end
+
+
 Gem::Specification.new do |spec|
   spec.name          = "sensu-checks-php-fpm"
-  spec.version       = SensuChecksPhpFpm::VERSION::VER_STRING
+  spec.version       = SensuChecksPhpFpm::Version::VER_STRING
   spec.authors       = ["vmpublishing development"]
   spec.email         = ["dev@vmpublishing.com"]
 
