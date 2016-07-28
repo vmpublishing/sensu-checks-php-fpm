@@ -65,7 +65,7 @@ class MetricPhpFpmStatus < Sensu::Plugin::Metric::CLI::Graphite
 
     body = if config[:socket] # do something completely different on this flag
 
-      response = `SCRIPT_NAME=#{config[:ping_path]} SCRIPT_FILENAME=#{config[:ping_path]} QUERY_STRING=#{config[:query_string]} REQUEST_METHOD=GET cgi-fcgi -bind -connect #{config[:socket]}`
+      response = `SCRIPT_NAME=#{config[:status_path]} SCRIPT_FILENAME=#{config[:status_path]} QUERY_STRING=#{config[:query_string]} REQUEST_METHOD=GET cgi-fcgi -bind -connect #{config[:socket]}`
       response.split("\r\n\r\n")[1]
 
     else # ok, do the http stuff
