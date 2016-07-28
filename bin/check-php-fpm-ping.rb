@@ -86,7 +86,7 @@ class CheckPhpFpmPing < Sensu::Plugin::Check::CLI
 
     end # http section
 
-  rescue Net::ReadTimeout: e
+  rescue Net::ReadTimeout => e
     critical "PHP-FPM request timeout: '#{e.message}'"
   end # def run
 
