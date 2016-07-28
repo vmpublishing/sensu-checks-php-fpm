@@ -57,7 +57,7 @@ class MetricPhpFpmStatus < Sensu::Plugin::Metric::CLI::Graphite
   option :scheme_append,
          short:            '-S APPEND_STRING',
          long:             '--scheme-append APPEND_STRING',
-         description:      'Set a string that will be placed right after the host identification and the script identitfication but before the measurements',
+         description:      'Set a string that will be placed right after the host identification and the script identification but before the measurements',
          default:          nil
 
 
