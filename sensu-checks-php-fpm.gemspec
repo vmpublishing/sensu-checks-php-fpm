@@ -17,9 +17,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["dev@vmpublishing.com"]
 
   spec.summary       = 'sensu gem to check php-fpm directly, without nginx or apache, using socket [or possibly ip]'
-  spec.description   = 'sensu gem to check php-fpm directly, without nginx or apache, using socket [or possibly ip]'
+  spec.description   = 'sensu gem to check php-fpm directly, without nginx or apache, using socket [or possibly ip]. Also support for multiple pools. Also support for http (if you really want to)'
   spec.homepage      = "https://github.com/vmpublishing/sensu-checks-php-fpm"
-  spec.license       = 'extended MIT'
+  spec.license       = 'Nonstandard'
 
   spec.files         = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md)
   spec.executables   = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
