@@ -14,10 +14,16 @@ This gem will give an actual installation explanation, as the default sensu plug
 
 If this gem is listed in rubygems.org, you can just go ahead and do
 ```
-sensu-install -p sensu-check-php-fpm
+~~sensu-install -p sensu-check-php-fpm~~
 ```
 
-If this gem is not listed there, you can still install it; the hard way.
+Updated:
+As Sensu expects the naming to be "sensu-plugins-FOO", you need to do it another way:
+```
+/opt/sensu/embedded/bin/gem install --no-ri --no-rdoc sensu-checks-php-fpm
+```
+
+If this does not work for you, you can still install it; the hard way.
 ```
 git clone git@github.com:vmpublishing/sensu-checks-php-fpm [SOME_PATH]
 cd [SOME_PATH]
