@@ -13,9 +13,8 @@ Testing the sockets directly depends on `libfcgi0ldbl`
 This gem will give an actual installation explanation, as the default sensu plugins miss it and the sensu documentation lacks any detailed explanation.
 
 If this gem is listed in rubygems.org, you can just go ahead and do
-```
 ~~sensu-install -p sensu-check-php-fpm~~
-```
+
 
 Updated:
 As Sensu expects the naming to be "sensu-plugins-FOO", you need to do it another way:
