@@ -57,7 +57,6 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
     "check_php_fpm_ping": {
       "command":      "check-php-fpm-ping.rb -s /var/run/php-fpm.sock -p /ping",
       "standalone":   true,
-      "subscribers":  ["all"],
       "interval":     10,
       "timeout":      120,
       "ttl":          180
@@ -73,7 +72,6 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
     "check_php_fpm_ping": {
       "command":      "check-php-fpm-ping.rb -a 127.0.0.1 -P 5678 -h www.example.com -p /ping -t 60",
       "standalone":   true,
-      "subscribers":  ["all"],
       "interval":     10,
       "timeout":      120,
       "ttl":          180
@@ -106,7 +104,6 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
       "type":         "metric",
       "command":      "metric-php-fpm-status.rb -s /var/run/php-fpm.sock -p /status",
       "standalone":   true,
-      "subscribers":  ["all"],
       "interval":     10,
       "timeout":      120,
       "ttl":          180
@@ -123,7 +120,6 @@ Alter `/opt/sensu/embedded/bin/gem` to the path to the gem-file sensu uses on yo
       "type":         "metric",
       "command":      "metric-php-fpm-status.rb -a 127.0.0.1 -P 5678 -h www.example.com -p /ping -t 60",
       "standalone":   true,
-      "subscribers":  ["all"],
       "interval":     10,
       "timeout":      120,
       "ttl":          180
